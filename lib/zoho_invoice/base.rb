@@ -90,6 +90,7 @@ module ZohoInvoice
 
       self
     rescue Faraday::Error::ClientError => e
+      puts e
       if e.response[:body]
         raise ZohoInvoice::Error::ClientError.from_response(e.response)
       end
